@@ -8,8 +8,8 @@ export class Service{
     storage;
     constructor(){
         this.client
-        .setEndpoint(config.appwriteURL)
-        .setProject(config.appwriteProjectId)
+        .setEndpoint(conf.appwriteURL)
+        .setProject(conf.appwriteProjectId)
         this.databases = new Databases(this.client);
         this.storage = new Storage(this.client)
     }
