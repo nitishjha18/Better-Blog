@@ -16,7 +16,7 @@ export class AuthService {
     // SignUp
     async createAccount({email, password, name}){
         try{
-            await this.account.create(ID.unique(), email, password, name);
+           const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount){
                 // call another method
                 return this.login({email,password});
@@ -30,9 +30,9 @@ export class AuthService {
     }
 
     // LogIn
-    async login(email, password){
+    async login({email, password}){
         try {
-            return await this.account.createEmailSession(email.password);
+            return await this.account.createEmailSession(email,password);
         } catch(error) {
             throw error;
         }
