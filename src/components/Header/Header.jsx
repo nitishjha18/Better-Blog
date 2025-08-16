@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, logo, LogoutBttn} from '../index' 
+import { Container, Logo, LogoutBttn} from '../index' 
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -38,7 +38,7 @@ function Header() {
 ]
 
   return (
-    <header>
+    <header className='py-3 shadow bg-gray-500'>
       <Container>
         <nav className='flex'>
           <div className='mr-4'>
