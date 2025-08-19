@@ -13,7 +13,7 @@ export default function RTE({name, control, label,
             control={control}
             render={({field: {onChange}}) => (
                 <Editor
-         initialValue='default value'
+         initialValue={defaultValue}
          init={
             {
                 branding: false,
@@ -52,6 +52,3 @@ export default function RTE({name, control, label,
         </div>
     )
 }
-
-
-{/*  */}
