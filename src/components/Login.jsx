@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link, useNavigate} from react-router-dom;
+import {Link, useNavigate} from "react-router-dom";
 import {login as authLogin} from "../store/authSlice"
 import {Button, Input, Logo} from "./index"
 import { useDispatch } from "react-redux";
@@ -16,7 +16,7 @@ function Login () {
     const login = async(data) => {
         setError("")
         try {
-            const session =  await authSlice.login(data)
+            const session =  await authService.login(data)
             if (session) {
                 const userData = await authService.getCurrentUser()
                 if(userData) dispatch(authLogin(userData));
@@ -29,7 +29,7 @@ function Login () {
 
     return (
         <div
-        className="className='flex items-center justify-center w-full'"
+        className='flex items-center justify-center w-full'
         >
             <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
             >
@@ -68,15 +68,14 @@ function Login () {
                  type="password"
                  placeholder="Enter your password"
                  {...register("password", {
-                    reqired
+                    required: true,
                  })}
                  />
-                 <button
+                 <Button
                  type="submit"
                  className="w-full"
-                 >Sign in</button>
+                 >Sign in</Button>
             </div>
-
         </form>
             </div>
         </div>
