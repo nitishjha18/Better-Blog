@@ -9,7 +9,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from "./Pages/Home.jsx"
 import { AuthLayout, Login } from './components/index.js';
 
-import AddPost from "./Pages/Home"
+import AddPost from "./Pages/AddPost"
 import Signup from "./Pages/Signup"
 import EditPost from "./Pages/EditPost"
 import Post from "./Pages/Post"
