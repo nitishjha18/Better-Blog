@@ -3,17 +3,9 @@ import { Login as LoginComponent } from '../components'
 function Login() {
   return (
     <div className='py-8'>
-        <LoginComponent />
+        <loginComponent />
     </div>
   )
 }
 
 export default Login
-
-// import { Login } from "../components";
-// // NOT: import { Login as loginComponents } ... then <loginComponents />
-// // Instead:
-// function Login() {
-//   return <Login />;
-// }
-// export default Login;
