@@ -11,7 +11,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    authService.getCurrentUser()
+  authService.getCurrentUser()
     .then((userData) => {
       if (userData) {
         dispatch(login({userData}))
@@ -19,8 +19,26 @@ function App() {
         dispatch(logout())
       }
     })
+    .catch((error) => {
+      // Handle guest users gracefully
+      console.log("Guest user detected");
+      dispatch(logout())
+    })
     .finally(() => setLoading(false))
-  }, [])
+}, [])
+
+
+  // useEffect(() => {
+  //   authService.getCurrentUser()
+  //   .then((userData) => {
+  //     if (userData) {
+  //       dispatch(login({userData}))
+  //     } else {
+  //       dispatch(logout())
+  //     }
+  //   })
+  //   .finally(() => setLoading(false))
+  // }, [])
   
   return !loading ? (
     <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
