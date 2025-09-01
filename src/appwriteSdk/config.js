@@ -125,12 +125,32 @@ export class Service{
         }
     }
 
-    getFilePreview(fileId){
-        return this.bucket.getFilePreview(
-            conf.appwriteBucketId,
-            fileId
-        )
-    }
+    // getFilePreview(fileId){
+    //     return this.bucket.getFilePreview(
+    //         conf.appwriteBucketId,
+    //         fileId
+    //     )
+    // }
+    
+//     getFilePreview(fileId) {
+//     if (!fileId) return null;
+//     return this.bucket.getFilePreview(
+//         conf.appwriteBucketId,
+//         fileId,
+//         // 100000, // width
+//         // 100000, // height  
+//         // "center", // gravity
+//         // 1000 // quality
+//     );
+// }
+getFileView(fileId) {
+  return this.bucket.getFileView(
+    conf.appwriteBucketId,
+    fileId
+  );
+}
+
+
 }
 
 
