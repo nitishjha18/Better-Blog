@@ -27,7 +27,7 @@ const submit = async (data) => {
             const file = await appwriteService.uploadFile(data.image[0]);
             if (file) {
                 fileId = file.$id;
-                if (post.featuredImage) {
+                if (post.featuredImages) {
                     await appwriteService.deleteFile(post.featuredImages);
                 }
             }
