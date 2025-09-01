@@ -21,23 +21,23 @@ export default function PostForm({ post }) {
 const submit = async (data) => {
     if (post) {
         // Editing an existing post
-        let fileId = post.featuredImage;
+        let fileId = post.featuredImages;
         // If a new image is selected, upload it and delete the old one
         if (data.image && data.image[0]) {
             const file = await appwriteService.uploadFile(data.image[0]);
             if (file) {
                 fileId = file.$id;
                 if (post.featuredImage) {
-                    await appwriteService.deleteFile(post.featuredImage);
+                    await appwriteService.deleteFile(post.featuredImages);
                 }
             }
         }
         const dbPost = await appwriteService.updatePost(post.$id, {
             ...data,
             // featuredImage: fileId,
-            featuredImage: fileId || "",
+            featuredImages: fileId || "",
             });
-            
+
         if (dbPost) {
             navigate(`/post/${dbPost.$id}`);
         }
@@ -51,7 +51,7 @@ const submit = async (data) => {
             }
         }
         // data.featuredImage = fileId;
-                data.featuredImage = fileId || "";
+                data.featuredImages = fileId || "";
 
         const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
         if (dbPost) {

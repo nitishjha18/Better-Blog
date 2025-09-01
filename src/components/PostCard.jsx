@@ -3,14 +3,14 @@ import React from 'react'
 import appwriteService from "../appwriteSdk/config"
 import {Link} from 'react-router-dom'
 
-function PostCard({$id, title, featuredImage}) {
+function PostCard({$id, title, featuredImages}) {
     // Safe image URL generation with null check
     const getImageUrl = () => {
-        if (!featuredImage || featuredImage.trim() === '') {
+        if (!featuredImages || featuredImages.trim() === '') {
             return null; // No image available
         }
         try {
-            return appwriteService.getFilePreview(featuredImage);
+            return appwriteService.getFilePreview(featuredImages);
         } catch (error) {
             console.log("Error getting image preview:", error);
             return null;
