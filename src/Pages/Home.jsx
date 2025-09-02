@@ -4,7 +4,6 @@ import authService from "../appwriteSdk/auth.js";
 import { Container, PostCard } from "../components";
 import { Link } from "react-router-dom";
 import { ArrowRight, Edit3, Users, Eye } from "react-feather";
-import Logo from "../components/Logo";
 import Button from "../components/Button";
 
 function Home() {
