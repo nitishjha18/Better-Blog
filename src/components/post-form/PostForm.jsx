@@ -18,48 +18,6 @@ export default function PostForm({ post }) {
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
 
-// const submit = async (data) => {
-//     if (post) {
-//         // Editing an existing post
-//         let fileId = post.featuredImages;
-//         // If a new image is selected, upload it and delete the old one
-//         if (data.image && data.image[0]) {
-//             const file = await appwriteService.uploadFile(data.image[0]);
-//             if (file) {
-//                 fileId = file.$id;
-//                 if (post.featuredImages) {
-//                     await appwriteService.deleteFile(post.featuredImages);
-//                 }
-//             }
-//         }
-//         const dbPost = await appwriteService.updatePost(post.$id, {
-//             ...data,
-//             // featuredImage: fileId,
-//             featuredImages: fileId || "",
-//             });
-
-//         if (dbPost) {
-//             navigate(`/post/${dbPost.$id}`);
-//         }
-//     } else {
-//         // Creating a new post
-//         let fileId = null;
-//         if (data.image && data.image[0]) {
-//             const file = await appwriteService.uploadFile(data.image[0]);
-//             if (file) {
-//                 fileId = file.$id;
-//             }
-//         }
-//         // data.featuredImage = fileId;
-//                 data.featuredImages = fileId || "";
-
-//         const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
-//         if (dbPost) {
-//             navigate(`/post/${dbPost.$id}`);
-//         }
-//     }
-// };
-
 const submit = async (data) => {
     try {
         // Check if user is logged in for creating posts

@@ -28,28 +28,16 @@ function App() {
 }, [])
 
 
-  // useEffect(() => {
-  //   authService.getCurrentUser()
-  //   .then((userData) => {
-  //     if (userData) {
-  //       dispatch(login({userData}))
-  //     } else {
-  //       dispatch(logout())
-  //     }
-  //   })
-  //   .finally(() => setLoading(false))
-  // }, [])
-  
   return !loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-      <div className='w-full block'>
+    <div className='min-h-screen flex flex-col font-semibold bg-gray-400'>
+      
         <Header />
-        <main>
-        TODO:  <Outlet />
+        <main className="flex-1">
+        <Outlet />
         </main>
         <Footer />
       </div>
-    </div>
+    
   ) : null
 }
 
