@@ -1,3 +1,4 @@
+
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
@@ -18,82 +19,36 @@ export default function PostForm({ post }) {
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
 
-const submit = async (data) => {
-    try {
-        // Check if user is logged in for creating posts
-        if (!post && (!userData || !userData.$id)) {
-            alert("You must be logged in to create a post.");
-            return;
-        }
-
+    const submit = async (data) => {
         if (post) {
-            // Editing an existing post
-            let fileId = post.featuredImages;
-            
-            // If a new image is selected, upload it and delete the old one
-            if (data.image && data.image[0]) {
-                const file = await appwriteService.uploadFile(data.image[0]);
-                if (file) {
-                    fileId = file.$id;
-                    // Delete old image if it exists
-                    if (post.featuredImages) {
-                        await appwriteService.deleteFile(post.featuredImages);
-                    }
-                }
+            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
+
+            if (file) {
+                appwriteService.deleteFile(post.featuredImages);
             }
-            
+
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
-                featuredImages: fileId || "",
+                featuredImages: file ? file.$id : undefined,
             });
-            
-            if (!dbPost || !dbPost.$id) {
-                console.error("Update failed - no document returned");
-                alert("Failed to update post. Please try again.");
-                return;
+
+            if (dbPost) {
+                navigate(`/post/${dbPost.$id}`);
             }
-            
-            navigate(`/post/${dbPost.$id}`);
-            
         } else {
-            // Creating a new post
-            let fileId = null;
-            
-            // Handle image upload for new posts
-            if (data.image && data.image[0]) {
-                const file = await appwriteService.uploadFile(data.image[0]);
-                if (file) {
-                    fileId = file.$id;
+            const file = await appwriteService.uploadFile(data.image[0]);
+
+            if (file) {
+                const fileId = file.$id;
+                data.featuredImages = fileId;
+                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
+
+                if (dbPost) {
+                    navigate(`/post/${dbPost.$id}`);
                 }
             }
-            
-            // Create post with all required fields
-            const dbPost = await appwriteService.createPost({ 
-                title: data.title,
-                slug: data.slug,
-                content: data.content,
-                status: data.status,
-                featuredImages: fileId || "",
-                userId: userData.$id 
-            });
-
-            if (!dbPost || !dbPost.$id) {
-                console.error("Create failed - no document returned");
-                alert("Failed to create post. Please try again.");
-                return;
-            }
-
-            navigate(`/post/${dbPost.$id}`);
         }
-    } catch (error) {
-        console.error("Submit error:", error);
-        alert("Something went wrong. Please try again.");
-    }
-};
-
-
-
-
+    };
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string")
@@ -147,7 +102,7 @@ const submit = async (data) => {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFileView(post.featuredImages)}
+                            src={appwriteService.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
