@@ -27,7 +27,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-footer-bg border-t border-border">
-      <div className=" min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50 mx-auto px-6 py-12">
+      <div className=" min-h-screen bg-gradient-to-br bg-white border-b border-gray-200 shadow-sm mx-auto px-6 py-12">
         {/* Logo and links */}
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {Object.entries(footerLinks).map(([category, links]) => (
