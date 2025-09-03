@@ -29,7 +29,7 @@ function App() {
 
 
   return !loading ? (
-    <div className='min-h-screen flex flex-col font-semibold bg-gray-400'>
+    <div className='min-h-screen flex flex-col font-semibold bg-gray-50'>
       
         <Header />
         <main className="flex-1">
