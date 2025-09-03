@@ -1,55 +1,64 @@
-import React from 'react'
-import appwriteService from "../appwriteSdk/config"
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import appwriteService from "../appwriteSdk/config";
 
-function PostCard({$id, title, featuredImages}) {
-    console.log("PostCard received featuredImages:", featuredImages); // Debug
-    
-    const getImageUrl = () => {
-        if (!featuredImages || featuredImages === '' || featuredImages === 'null') {
-            console.log("No valid image ID"); // Debug
-            return null;
-        }
-        
-        try {
-            const url = appwriteService.getFileView(featuredImages);
-                        // const url = appwriteService.getFilePreview(featuredImages);
-
-            console.log("Image URL:", url); // Debug
-            return url;
-        } catch (error) {
-            console.log("Error generating preview:", error);
-            return null;
-        }
+function PostCard({
+  $id,
+  title,
+  subtitle,
+  featuredImages,
+  author,
+  date,
+  tag,
+  isOwner,
+  onDelete,
+}) {
+  // Generate image URL
+  const getImageUrl = () => {
+    if (!featuredImages) return null;
+    try {
+      return appwriteService.getFileView(featuredImages);
+    } catch {
+      return null;
     }
+  };
+  const imageUrl = getImageUrl();
 
-    const imageUrl = getImageUrl();
+  // Delete handler
 
-    return (
-        <Link to={`/post/${$id}`}>
-            <div className='w-full bg-gray-100 rounded-xl p-4'>
-                <div className='w-full justify-center mb-4'>
-                    {imageUrl ? (
-                        <img 
-                            src={imageUrl} 
-                            alt={title}
-                            className='rounded-xl w-full h-48 object-cover'
-                            onError={(e) => {
-                                console.log("Image failed to load:", e.target.src);
-                                e.target.style.display = 'none';
-                            }}
-                            onLoad={() => console.log("Image loaded successfully")}
-                        />
-                    ) : (
-                        <div className='w-full h-48 bg-gray-200 rounded-xl flex items-center justify-center'>
-                            <span className="text-gray-500">No Image Available</span>
-                        </div>
-                    )}
-                </div>
-                <h2 className='text-xl font-bold'>{title}</h2>
+  return (
+    <div className="bg-white p-4 rounded-lg shadow hover:shadow-xl transition duration-200 relative group">
+      <Link to={`/post/${$id}`} className="className=block focus:outline-none">
+        <div className="relative">
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-40 object-cover rounded mb-4 transition-transform group-hover:scale-105"
+            />
+          ) : (
+            <div className="w-full h-40 bg-gray-200 rounded mb-4 flex items-center justify-center text-gray-500">
+              No Image
             </div>
-        </Link>
-    )
+          )}
+          {tag && (
+            <span className="absolute top-2 left-2 bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded shadow-sm">
+              {tag}
+            </span>
+          )}
+        </div>
+        <h3 className="font-semibold text-lg mb-1 group-hover:text-blue-700 transition-colors">
+          <Link
+            to={`/post/${$id}`}
+            className="focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
+          >
+            {title}
+          </Link>
+        </h3>
+        {subtitle && <p className="text-sm text-gray-600 mb-2">{subtitle}</p>}
+      </Link>
+    </div>
+  );
 }
 
-export default PostCard
+export default PostCard;
