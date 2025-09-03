@@ -26,8 +26,8 @@ function Header() {
       active: !authStatus,
   },
   {
-      name: "All Posts",
-      slug: "/all-posts",
+      name: "YourPosts",
+      slug: "/your-posts",
       active: authStatus,
   },
   {
@@ -65,10 +65,10 @@ return (
           {authStatus && (
             <>
               <Link 
-                to="/all-posts"
+                to="/your-posts"
                 className="px-3 py-2 rounded-md text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
               >
-                All Posts
+                Your Posts
               </Link>
               <Link 
                 to="/add-post"
