@@ -31,9 +31,14 @@ export default function YourPosts() {
   if (user === undefined) return null
 
   return (
-    <div className="w-full py-8">
+    <div className="min-h-screen bg-white py-8">
       <Container>
-        <h1 className="text-4xl font-bold mb-6">Your Posts</h1>
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          Your {" "}
+          <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+            Blogs
+          </span>
+        </h1>
         <div className="flex flex-wrap -mx-2">
           {posts.map((post) => (
             <div key={post.$id} className="w-full sm:w-1/2 lg:w-1/4 p-2">
