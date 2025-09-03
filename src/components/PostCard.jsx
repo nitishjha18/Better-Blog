@@ -24,7 +24,7 @@ function PostCard({
   return (
     <div className="bg-white p-4 rounded-lg shadow hover:shadow-xl transition duration-200 relative group">
       <Link to={`/post/${$id}`} className="block focus:outline-none">
-      <div className="relative aspect-[4/3] w-full rounded mb-4 overflow-hidden bg-gray-100">
+      <div className="relative aspect-[1/1] w-full rounded mb-4 overflow-hidden bg-gray-100">
   {imageUrl ? (
     <img
       src={imageUrl}
