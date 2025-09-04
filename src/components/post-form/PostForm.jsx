@@ -23,7 +23,7 @@ export default function PostForm({ post }) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
-                appwriteService.deleteFile(post.featuredImage);
+                appwriteService.deleteFile(post.featuredImages);
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
@@ -101,7 +101,7 @@ export default function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFileView(post.featuredImage)}
+                            src={appwriteService.getFileView(post.featuredImages)}
                             alt={post.title}
                             className="rounded-lg"
                         />
