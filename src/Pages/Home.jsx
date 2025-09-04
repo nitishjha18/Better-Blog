@@ -30,7 +30,7 @@ function Home() {
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
         {/* Hero */}
         <main className="py-14 px-4 sm:py-20">
-          <Container className="max-w-2xl mx-auto text-center">
+          <Container className="max-w-6xl mx-auto px-4 text-center">
             <h1 className="responsive-heading mb-6 font-bold leading-tight">
               Share Your Stories with the{" "}
               <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
@@ -65,7 +65,7 @@ function Home() {
 
         {/* Features Grid */}
         <section className="py-12 px-4">
-          <Container className="max-w-5xl mx-auto">
+          <Container className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Rich Editor */}
               <div className="bg-white rounded-xl shadow hover:shadow-md transition text-center p-6">
@@ -74,7 +74,8 @@ function Home() {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Rich Editor</h3>
                 <p className="text-gray-600">
-                  Write with our powerful editor featuring formatting tools and image uploads.
+                  Write with our powerful editor featuring formatting tools and
+                  image uploads.
                 </p>
               </div>
               {/* Community */}
@@ -84,7 +85,8 @@ function Home() {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Community</h3>
                 <p className="text-gray-600">
-                  Connect with fellow writers and readers in our vibrant community.
+                  Connect with fellow writers and readers in our vibrant
+                  community.
                 </p>
               </div>
               {/* Analytics */}
@@ -103,20 +105,29 @@ function Home() {
 
         {/* Bottom CTA */}
         <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-50 to-blue-100 px-4">
-          <Container className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Start Writing?</h2>
+          <Container className="max-w-6xl mx-auto px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+              Ready to Start Writing?
+            </h2>
             <p className="text-gray-600 mb-6">
-              Join our community of writers and start sharing your stories today.
+              Join our community of writers and start sharing your stories
+              today.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4">
               <Link to="/login">
-                <span className="text-blue-600 hover:underline font-medium text-lg">Login</span>
+                <span className="text-blue-600 hover:underline font-medium text-lg">
+                  Login
+                </span>
               </Link>
               <span className="text-gray-500 hidden sm:block">or</span>
               <Link to="/signup">
-                <span className="text-blue-600 hover:underline font-medium text-lg">Sign up</span>
+                <span className="text-blue-600 hover:underline font-medium text-lg">
+                  Sign up
+                </span>
               </Link>
-              <span className="text-gray-500 hidden sm:block">to read posts</span>
+              <span className="text-gray-500 hidden sm:block">
+                to read posts
+              </span>
             </div>
           </Container>
         </section>
@@ -130,7 +141,10 @@ function Home() {
       <Container>
         <h1 className="responsive-heading font-bold mb-6 leading-tight text-center sm:text-left">
           Community
-          <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent"> Feed</span>
+          <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+            {" "}
+            Feed
+          </span>
         </h1>
         {/* Posts Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -150,3 +164,6 @@ function Home() {
 }
 
 export default Home;
+
+
+
