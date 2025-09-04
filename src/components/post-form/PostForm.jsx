@@ -15,7 +15,6 @@ export default function PostForm({ post }) {
         status: post?.status || "active",
       },
     });
-
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
 
@@ -24,22 +23,18 @@ export default function PostForm({ post }) {
       const file = data.image[0]
         ? await appwriteService.uploadFile(data.image[0])
         : null;
-
       if (file) {
         appwriteService.deleteFile(post.featuredImages);
       }
-
       const dbPost = await appwriteService.updatePost(post.$id, {
         ...data,
         featuredImages: file ? file.$id : undefined,
       });
-
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
       const file = await appwriteService.uploadFile(data.image[0]);
-
       if (file && file.$id) {
         const fileId = file.$id;
         data.featuredImages = fileId;
@@ -47,14 +42,10 @@ export default function PostForm({ post }) {
           ...data,
           userId: userData.$id,
         });
-
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
         }
       } else {
-        // Handle upload failure
-        console.error("File upload failed");
-        // You could show an error message to user here
         alert("Image upload failed. Please try again.");
       }
     }
@@ -67,7 +58,6 @@ export default function PostForm({ post }) {
         .toLowerCase()
         .replace(/[^a-zA-Z\d\s]+/g, "-")
         .replace(/\s/g, "-");
-
     return "";
   }, []);
 
@@ -77,23 +67,26 @@ export default function PostForm({ post }) {
         setValue("slug", slugTransform(value.title), { shouldValidate: true });
       }
     });
-
     return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
+    <form
+      onSubmit={handleSubmit(submit)}
+      className="w-full max-w-2xl mx-auto flex flex-col md:flex-row gap-6"
+    >
+      {/* LEFT (Title, Slug, Content) */}
+      <div className="w-full md:w-2/3 flex flex-col gap-4">
         <Input
           label="Title :"
           placeholder="Title"
-          className="mb-4"
+          className="mb-2"
           {...register("title", { required: true })}
         />
         <Input
           label="Slug :"
           placeholder="Slug"
-          className="mb-4"
+          className="mb-2"
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
@@ -108,27 +101,28 @@ export default function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 px-2">
+      {/* RIGHT (Image, Status, Button) */}
+      <div className="w-full md:w-1/3 flex flex-col gap-4">
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4"
+          className="mb-2"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
         {post && (
-          <div className="w-full mb-4">
+          <div className="w-full mb-2">
             <img
               src={appwriteService.getFileView(post.featuredImages)}
               alt={post.title}
-              className="rounded-lg"
+              className="rounded-lg max-h-48 object-cover w-full"
             />
           </div>
         )}
         <Select
           options={["active", "inactive"]}
           label="Status"
-          className="mb-4"
+          className="mb-2"
           {...register("status", { required: true })}
         />
         <Button

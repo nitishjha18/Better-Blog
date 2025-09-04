@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import authService from '../appwriteSdk/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../store/authSlice'
-import { Button, Input, Logo } from './index'
+import { Button, Input } from './index'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import logo from '../assets/logo.png'
@@ -28,8 +28,8 @@ function Signup() {
   }
 
   return (
-    <section className="min-h-screen bg-gray-50 flex items-center justify-center px-4 pb-8">
-      <div className="w-full max-w-md bg-white rounded-2xl border border-gray-200 p-10 shadow-md">
+    <section className="min-h-screen bg-gray-50 flex items-center justify-center px-2">
+      <div className="w-full max-w-md bg-white rounded-2xl border border-gray-200 shadow-md p-6 sm:p-10">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Logo" className="h-12 w-auto" />
         </div>
@@ -43,13 +43,13 @@ function Signup() {
           </Link>
         </p>
         {error && <p className="text-center text-red-600 mb-4">{error}</p>}
-        <form onSubmit={handleSubmit(create)} className="space-y-5">
+        <form onSubmit={handleSubmit(create)} className="space-y-4">
           <Input
             label="Full Name:"
             placeholder="Enter your full name"
             {...register('name', { required: 'Name is required' })}
             error={errors.name?.message}
-            className="bg-gray-100 border border-transparent rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-gray-100 border border-transparent rounded-lg"
           />
           <Input
             label="Email:"
@@ -63,7 +63,7 @@ function Signup() {
               },
             })}
             error={errors.email?.message}
-            className="bg-gray-100 border border-transparent rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-gray-100 border border-transparent rounded-lg"
           />
           <Input
             label="Password:"
@@ -71,11 +71,11 @@ function Signup() {
             placeholder="Enter your password"
             {...register('password', { required: 'Password is required' })}
             error={errors.password?.message}
-            className="bg-gray-100 border border-transparent rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-gray-100 border border-transparent rounded-lg"
           />
           <Button
             type="submit"
-            className="w-full bg-blue-600 text-white font-medium rounded-lg py-3 hover:bg-blue-700 transition"
+            className="w-full font-medium rounded-lg py-3"
           >
             Create Account
           </Button>

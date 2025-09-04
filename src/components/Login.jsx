@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { login as authLogin } from '../store/authSlice'
-import { Button, Input, Logo } from './index'
+import { Button, Input } from './index'
 import { useDispatch } from 'react-redux'
 import authService from '../appwriteSdk/auth'
 import { useForm } from 'react-hook-form'
@@ -28,8 +28,8 @@ function Login() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
-      <div className="w-full max-w-lg bg-white rounded-2xl border border-gray-200 p-10 shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-2">
+      <div className="w-full max-w-md bg-white rounded-2xl border border-gray-200 shadow-md p-6 sm:p-10">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Logo" className="h-12 w-auto" />
         </div>
@@ -37,13 +37,15 @@ function Login() {
           Sign in to your account
         </h2>
         <p className="text-center text-gray-500 mb-6">
-          Don’t have an account?{' '}
+          Don’t have an account?{" "}
           <Link to="/signup" className="text-blue-600 hover:underline">
             Sign Up
           </Link>
         </p>
-        {error && <p className="text-center text-red-600 mb-4">{error}</p>}
-        <form onSubmit={handleSubmit(login)} className="space-y-5">
+        {error && (
+          <p className="text-center text-red-600 mb-4">{error}</p>
+        )}
+        <form onSubmit={handleSubmit(login)} className="space-y-4">
           <Input
             label="Email:"
             type="email"
@@ -56,7 +58,7 @@ function Login() {
               },
             })}
             error={errors.email?.message}
-            className="bg-gray-100 border border-transparent rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-gray-100 border border-transparent rounded-lg"
           />
           <Input
             label="Password:"
@@ -64,11 +66,11 @@ function Login() {
             placeholder="Enter your password"
             {...register('password', { required: 'Password is required' })}
             error={errors.password?.message}
-            className="bg-gray-100 border border-transparent rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-gray-100 border border-transparent rounded-lg"
           />
           <Button
             type="submit"
-            className="w-full bg-blue-600 text-white font-medium rounded-lg py-3 hover:bg-blue-700 transition"
+            className="w-full font-medium rounded-lg py-3"
           >
             Sign in
           </Button>

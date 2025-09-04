@@ -33,31 +33,32 @@ export default function YourPosts() {
   if (user === undefined) return null;
 
   return (
-    <div className="w-full py-8 bg-white">
+    <div className="py-6 bg-white min-h-screen">
       <Container>
-        <h1 className="text-4xl font-bold mb-6">Your Posts</h1>
+        <h1 className="responsive-heading text-center md:text-left font-bold mb-6">
+          Your Posts
+        </h1>
         {posts.length === 0 ? (
-          <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow text-center mt-8">
-            <h2 className="text-lg font-semibold mb-4">No posts yet</h2>
+          <div className="max-w-xs sm:max-w-md mx-auto bg-white p-6 rounded-lg shadow text-center mt-8">
+            <h2 className="text-base sm:text-lg font-semibold mb-4">No posts yet</h2>
             <Link
               to="/add-post"
-              className="inline-block px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition mt-2"
+              className="inline-block w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition mt-2 font-medium"
             >
               Add Post
             </Link>
           </div>
         ) : (
-          <div className="flex flex-wrap -mx-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {posts.map((post) => (
-              <div key={post.$id} className="w-full sm:w-1/2 lg:w-1/4 p-2">
-                <PostCard
-                  $id={post.$id}
-                  title={post.title}
-                  featuredImages={post.featuredImages}
-                  isOwner={true} // Enables edit/delete controls
-                  onDelete={removePost} // Callback to update UI after delete
-                />
-              </div>
+              <PostCard
+                key={post.$id}
+                $id={post.$id}
+                title={post.title}
+                featuredImages={post.featuredImages}
+                isOwner={true} // Enables edit/delete controls
+                onDelete={removePost} // Callback to update UI after delete
+              />
             ))}
           </div>
         )}
@@ -65,4 +66,3 @@ export default function YourPosts() {
     </div>
   );
 }
-
