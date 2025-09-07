@@ -4,21 +4,21 @@ import logo from '../../assets/logo.png';
 
 const footerLinks = {
   COMPANY: [
-    { label: "Features", href: "/features" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Affiliate Program", href: "/affiliate" },
+    { label: "Features", href: "/" },
+    { label: "Pricing", href: "/" },
+    { label: "Affiliate Program", href: "/" },
     { label: "Press Kit", href: "/press-kit" },
   ],
   SUPPORT: [
-    { label: "Account", href: "/account" },
-    { label: "Help", href: "/help" },
-    { label: "Contact Us", href: "/contact" },
-    { label: "Customer Support", href: "/support" },
+    { label: "Account", href: "/" },
+    { label: "Help", href: "/" },
+    { label: "Contact Us", href: "/" },
+    { label: "Customer Support", href: "/" },
   ],
   LEGALS: [
-    { label: "Terms & Conditions", href: "/terms" },
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Licensing", href: "/licensing" },
+    { label: "Terms & Conditions", href: "/" },
+    { label: "Privacy Policy", href: "/" },
+    { label: "Licensing", href: "/" },
   ],
 };
 
