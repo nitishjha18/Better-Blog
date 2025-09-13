@@ -1,6 +1,6 @@
 # Scholar Circle - Where every topic matters
 
-A modern, full-featured blogging platform built with React and powered by Appwrite backend services. Better Blog enables users to create, publish, and share their stories with a vibrant community of writers and readers.
+A modern, full-featured article publishing platform built with React and powered by Appwrite backend services. Scholar Circle enables users to create, publish, and share their stories with a vibrant community of writers and readers.
 
 ## 🌟 Features
 
