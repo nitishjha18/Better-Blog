@@ -1,4 +1,54 @@
+/* src/index.css */
+
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global box-sizing reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove default body margins */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override or remove restrictive container widths */
+.responsive-container {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* If you’d still like a max width on ultra-wide screens */
+@media (min-width: 1280px) {
+  .responsive-container {
+    max-width: 1600px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Responsive typography (unchanged) */
+.responsive-text {
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+}
+.responsive-heading {
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  line-height: 1.2;
+}
+
+
+
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -18,7 +68,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Desktop-optimized responsive containers */
 .responsive-container {
   width: 100%;
   max-width: 100vw;
@@ -48,31 +97,29 @@ body {
 
 @media (min-width: 1280px) {
   .responsive-container {
-    max-width: 1400px; /* Increased from 1200px */
+    max-width: 1400px; 
     padding: 0 3rem;
   }
 }
 
 @media (min-width: 1536px) {
   .responsive-container {
-    max-width: 1600px; /* Much wider for large desktops */
+    max-width: 1600px; 
     padding: 0 4rem;
   }
 }
 
 @media (min-width: 1920px) {
   .responsive-container {
-    max-width: 1800px; /* Full utilization of 1920px+ screens */
-    padding: 0 5rem;
+    max-width: 1800px; 
   }
 }
 
-/* Desktop-optimized typography */
 .responsive-text {
-  font-size: clamp(0.875rem, 2.5vw, 1.25rem); /* Larger max size */
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem); 
 }
 
 .responsive-heading {
-  font-size: clamp(1.5rem, 4vw, 3.5rem); /* Much larger on desktop */
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   line-height: 1.2;
-}
+} */

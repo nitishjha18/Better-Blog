@@ -27,7 +27,7 @@ function Home() {
   // LOGGED-OUT VIEW
   if (!user) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
+      <div className="min-h-screen responsive-container bg-gradient-to-br from-purple-50 via-white to-purple-50">
         {/* Hero */}
         <main className="py-14 px-4 sm:py-20">
           <Container className="max-w-6xl mx-auto px-4 text-center">
@@ -137,7 +137,7 @@ function Home() {
 
   // LOGGED-IN VIEW
   return (
-    <div className="min-h-screen bg-white py-6 sm:py-8">
+    <div className="min-h-screen responsive-container bg-white ">
       <Container>
         <h1 className="responsive-heading font-bold mb-6 leading-tight text-center sm:text-left">
           Community
