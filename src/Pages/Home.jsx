@@ -27,6 +27,7 @@ function Home() {
   // LOGGED-OUT VIEW
   if (!user) {
     return (
+      <div className="max-w-7xl mx-auto px-4">
       <div className="min-h-screen responsive-container bg-gradient-to-br from-purple-50 via-white to-purple-50">
         {/* Hero */}
         <main className="py-14 px-4 sm:py-20">
@@ -131,12 +132,15 @@ function Home() {
             </div>
           </Container>
         </section>
+        </div>
       </div>
     );
   }
 
   // LOGGED-IN VIEW
   return (
+          <div className="max-w-7xl mx-auto px-4">
+
     <div className="min-h-screen responsive-container bg-white ">
       <Container>
         <h1 className="responsive-heading font-bold mb-6 leading-tight text-center sm:text-left">
@@ -159,6 +163,7 @@ function Home() {
           ))}
         </div>
       </Container>
+    </div>
     </div>
   );
 }
