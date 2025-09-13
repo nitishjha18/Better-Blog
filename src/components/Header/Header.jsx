@@ -82,7 +82,7 @@ function Header() {
               alt="Better Blog Logo"
               className="h-8 w-8 object-contain"
             />
-            <span className="text-xl font-bold text-gray-900">Better Blog</span>
+            <span className="text-xl font-bold text-gray-900">Scholar Circle</span>
           </Link>
 
           {/* Desktop Navigation */}

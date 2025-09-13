@@ -1,3 +1,5 @@
+// src/Pages/Home.jsx
+
 import React, { useEffect, useState } from "react";
 import appwriteService from "../appwriteSdk/config.js";
 import authService from "../appwriteSdk/auth.js";
@@ -27,13 +29,12 @@ function Home() {
   // LOGGED-OUT VIEW
   if (!user) {
     return (
-      <div className="max-w-7xl mx-auto px-4">
-      <div className="min-h-screen responsive-container bg-gradient-to-br from-purple-50 via-white to-purple-50">
+      <div className="w-full bg-gradient-to-br from-purple-50 via-white to-purple-50 responsive-container min-h-screen">
         {/* Hero */}
         <main className="py-14 px-4 sm:py-20">
-          <Container className="max-w-6xl mx-auto px-4 text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <h1 className="responsive-heading mb-6 font-bold leading-tight">
-              Share Your Stories with the{" "}
+              Share Your Learnings with the{" "}
               <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 World
               </span>
@@ -61,14 +62,13 @@ function Home() {
                 </Button>
               </Link>
             </div>
-          </Container>
+          </div>
         </main>
 
         {/* Features Grid */}
         <section className="py-12 px-4">
-          <Container className="max-w-7xl mx-auto px-4">
+          <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Rich Editor */}
               <div className="bg-white rounded-xl shadow hover:shadow-md transition text-center p-6">
                 <div className="w-12 h-12 mb-4 mx-auto flex items-center justify-center bg-blue-100 rounded-lg">
                   <Edit3 className="h-6 w-6 text-blue-600" />
@@ -79,7 +79,6 @@ function Home() {
                   image uploads.
                 </p>
               </div>
-              {/* Community */}
               <div className="bg-white rounded-xl shadow hover:shadow-md transition text-center p-6">
                 <div className="w-12 h-12 mb-4 mx-auto flex items-center justify-center bg-green-100 rounded-lg">
                   <Users className="h-6 w-6 text-green-600" />
@@ -90,7 +89,6 @@ function Home() {
                   community.
                 </p>
               </div>
-              {/* Analytics */}
               <div className="bg-white rounded-xl shadow hover:shadow-md transition text-center p-6">
                 <div className="w-12 h-12 mb-4 mx-auto flex items-center justify-center bg-yellow-100 rounded-lg">
                   <Eye className="h-6 w-6 text-yellow-600" />
@@ -101,12 +99,12 @@ function Home() {
                 </p>
               </div>
             </div>
-          </Container>
+          </div>
         </section>
 
         {/* Bottom CTA */}
         <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-50 to-blue-100 px-4">
-          <Container className="max-w-6xl mx-auto px-4 text-center">
+          <div className="max-w-6xl mx-auto px-4 text-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4">
               Ready to Start Writing?
             </h2>
@@ -130,19 +128,16 @@ function Home() {
                 to read posts
               </span>
             </div>
-          </Container>
+          </div>
         </section>
-        </div>
       </div>
     );
   }
 
   // LOGGED-IN VIEW
   return (
-          <div className="max-w-7xl mx-auto px-4">
-
-    <div className="min-h-screen responsive-container bg-white ">
-      <Container>
+    <div className="w-full bg-white responsive-container min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <h1 className="responsive-heading font-bold mb-6 leading-tight text-center sm:text-left">
           Community
           <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
@@ -162,13 +157,9 @@ function Home() {
             />
           ))}
         </div>
-      </Container>
-    </div>
+      </div>
     </div>
   );
 }
 
 export default Home;
-
-
-
